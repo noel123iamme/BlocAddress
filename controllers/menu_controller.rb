@@ -86,6 +86,17 @@
    end
  
    def search_entries
+      if @address_book.entries.size > 0
+        print "Entry Number: "
+        id = gets.chomp
+        if id.to_i < @address_book.entries.size
+          puts @address_book.entries[id.to_i].to_s
+        else
+          system "clear"
+          puts "#{id} invalid"
+          search_entries
+        end
+      end
    end
  
    def read_csv
