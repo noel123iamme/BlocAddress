@@ -16,6 +16,7 @@
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - demolish all etnries"
      print "Enter your selection: "
  
  # #3
@@ -45,6 +46,11 @@
  # #8
        exit(0)
  # #9
+    when 6
+      system "clear"
+      demolish_entries
+      main_menu
+
      else
        system "clear"
        puts "Sorry, that is not a valid input"
@@ -128,6 +134,12 @@
      @address_book.entries.delete(entry)
      puts "#{entry.name} has been deleted"
    end
+
+   def demolish_entries
+    while @address_book.entries.size > 0
+      delete_entry(@address_book.entries[0])
+    end
+  end
 
    def edit_entry(entry)
  # #4
